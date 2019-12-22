@@ -1,0 +1,11 @@
+name: "godocit-testing"
+description: "Automatically create documentation issues for PRs"
+
+inputs:
+  installationID: # id of input
+    description: "GitHub App's installation ID"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
