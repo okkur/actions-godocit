@@ -2,8 +2,8 @@ name: "godocit-testing"
 description: "Automatically create documentation issues for PRs"
 
 inputs:
-  installationID: # id of input
-    description: "GitHub App's installation ID"
+  targetRepo:
+    description: 'Target repoitory''s name ("user/repo" format)'
     required: true
 
 runs:

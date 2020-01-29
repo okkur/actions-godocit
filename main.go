@@ -74,7 +74,7 @@ func main() {
 				log.Fatalf("[godocit]: Couldn't get the access token: %s", err.Error())
 			}
 
-			if err := CreateIssue(os.Getenv("TARGET_REPO"), PR, *token); err != nil {
+			if err := CreateIssue(os.Getenv("INPUT_TARGETREPO"), PR, *token); err != nil {
 				log.Fatalf("[godocit]: Couldn't create the documentation issue: %s", err.Error())
 			}
 		}
