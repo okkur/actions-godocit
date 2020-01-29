@@ -1,4 +1,4 @@
-module go.txtdirect.org/godocit
+module go.okkur.org/godocit
 
 go 1.13
 

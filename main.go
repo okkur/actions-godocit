@@ -31,7 +31,7 @@ type Label struct {
 }
 
 type User struct {
-	Login string `json:"erbesharat"`
+	Login string `json:"login"`
 }
 
 type Installation struct {
@@ -66,16 +66,16 @@ func main() {
 		if label.Name == "needs documentation" {
 			jwt, err := GenerateJWT()
 			if err != nil {
-				log.Fatalf("[godocit]: Coudln't generate the JWT token: %s", err.Error())
+				log.Fatalf("[godocit]: Couldn't generate the JWT token: %s", err.Error())
 			}
 
 			token, err := GetToken(*jwt)
 			if err != nil {
-				log.Fatalf("[godocit]: Coudln't get the access token: %s", err.Error())
+				log.Fatalf("[godocit]: Couldn't get the access token: %s", err.Error())
 			}
 
 			if err := CreateIssue(os.Getenv("TARGET_REPO"), PR, *token); err != nil {
-				log.Fatalf("[godocit]: Coudln't create the documentation issue: %s", err.Error())
+				log.Fatalf("[godocit]: Couldn't create the documentation issue: %s", err.Error())
 			}
 		}
 	}
@@ -89,14 +89,14 @@ func CreateIssue(repo string, PR PR, token string) error {
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("https://api.github.com/repos/%s/issues", repo), bytes.NewBuffer(requestBody))
 	if err != nil {
-		return fmt.Errorf("Coudln't create the POST request for issue: %s", err.Error())
+		return fmt.Errorf("Couldn't create the POST request for issue: %s", err.Error())
 	}
 
 	req.Header.Add("Authorization", fmt.Sprintf("token %s", token))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("Coudln't send the POST request to create issue: %s", err.Error())
+		return fmt.Errorf("Couldn't send the POST request to create issue: %s", err.Error())
 	}
 
 	if resp.StatusCode != http.StatusCreated {
@@ -118,7 +118,7 @@ func GenerateJWT() (*string, error) {
 
 	tokenString, err := token.SignedString(parsedKey)
 	if err != nil {
-		return nil, fmt.Errorf("Coudln't sign the JWT token: %s", err.Error())
+		return nil, fmt.Errorf("Couldn't sign the JWT token: %s", err.Error())
 	}
 
 	return &tokenString, nil
@@ -131,7 +131,7 @@ func GetToken(jwt string) (*string, error) {
 		nil,
 	)
 	if err != nil {
-		return nil, fmt.Errorf("Coudln't create the request for access token: %s", err.Error())
+		return nil, fmt.Errorf("Couldn't create the request for access token: %s", err.Error())
 	}
 
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", jwt))
@@ -139,7 +139,7 @@ func GetToken(jwt string) (*string, error) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("Coudln't send the POST request to get the access token: %s", err.Error())
+		return nil, fmt.Errorf("Couldn't send the POST request to get the access token: %s", err.Error())
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
