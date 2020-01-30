@@ -1,0 +1,11 @@
+name: "godocit-testing"
+description: "Automatically create documentation issues for PRs"
+
+inputs:
+  targetRepo:
+    description: 'Target repoitory''s name ("user/repo" format)'
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
