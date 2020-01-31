@@ -1,0 +1,108 @@
+project:
+  name: "Godocit"
+  state: "unstable"
+  image: "/blob/master/logo.svg"
+  website: "https://godocit.okkur.org"
+  oneLiner: "Create documentation needed issues across different repositories"
+  description: |
+    When a PR introduces a new feature that requires documentation, this action
+    can automatically create an issue on your website's repository to add
+    documentation for that new feature.
+  version: "v0.1.0"
+  mainLicense: "apache2"
+  docsLicense: "CCBySa"
+
+vision:
+  type: ""
+  overview: |
+    Provide an automatic flow for keeping track of documentation.
+  items:
+    - 'Works easily by just adding a "documentation needed" label on the PR'
+    - "Create issues on different repositories"
+  concept: "Godocit's core concept is to provide a automatic tool to never miss
+    documentation for new features."
+  aim: "Godocit provides an easy and fast way to create documentation issues for
+    new features and keep track of undocumented features"
+
+readme:
+  usageExample: |
+    For using godocit you first need to create a Github App and install it on your
+    user or organization that has read and write access to the source and target
+    repositories. For more information read the ["Authenticating with GitHub Apps"](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/) page.
+
+    After creating the app and installing it on your user or organization, write the
+    following config in `.github/workflows/main.yml` file in your source repository:
+    ```
+    name: CI
+
+    on: 
+      pull_request:
+        types: [labeled]
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Create the documentation issues
+          uses: okkur/actions-godocit@v0.0.1
+          with:
+            targetRepo: 'USER/REPO'
+          env:
+            PRIVATE_KEY: ${{ secrets.PrivateKey }}
+            INSTALLATION_ID: ${{ secrets.InstallationID }}
+
+    ```
+
+    Note: Since in this version you should create a GitHub App for godocit, you 
+    have to replace the `uses: okkur/actions-godocit@v0.0.1` line with your
+    action's name.
+    In the next version the need for generating a GitHub App and using its
+    private key will be removed and you can use the action released by
+    Okkur Labs.
+
+    Replace the `targetRepo` input with the target repository's name. 
+    Then after activating the action on the source repository, create the
+    `PrivateKey` and `InstallationID` secrets on the source repository and fill 
+    them with the GitHub App's **Private Key** and **Installation ID**.
+
+    Now that GitHub Action, workflow and the secrets are setup, you can add the
+    "documentation needed" . Then a job will get
+    activated and creates a "Documentation Needed" issue on the target repository.
+
+contributionLinks:
+  issueTemplate: "/.github/ISSUE_TEMPLATE.md"
+  starterIssues: "https://github.com/okkur/actions-godocit/labels/starter%20issue"
+
+emails:
+  commercialSupport: "support@okkur.org"
+  security: "security@okkur.org"
+  coc: "coc@okkur.org"
+
+copyright:
+  owner: "The Godocit authors"
+  year: "2019"
+
+cla:
+  copyrightHolder: "nzt.ventures GmbH"
+  mail: "legal@nzt.ventures"
+
+maintainers:
+  - name: "Michael Grosser"
+    nick: "stp-ip"
+
+repo:
+  link: "https://godocit.okkur.org/repo"
+  type: "Github"
+
+badges:
+  - image: "https://img.shields.io/badge/state-unstable-blue.svg"
+    alt: "state"
+  - image: "https://img.shields.io/github/release/okkur/actions-godocit.svg"
+    link: "https://github.com/okkur/actions-godocit/releases"
+    alt: "release"
+  - image: "https://img.shields.io/github/license/okkur/actions-godocit.svg"
+    link: "LICENSE"
+    alt: "license"
+
+reposeed:
+  configVersion: "v1"
