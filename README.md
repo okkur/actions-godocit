@@ -1,4 +1,4 @@
-<a href='https://godocit.okkur.org'><img src='/blob/master/logo.svg' width='500'/></a>
+<a href='https://godocit.okkur.org'><img src='https://raw.githubusercontent.com/okkur/actions-godocit/master/media/logo.svg?sanitize=true' width='500'/></a>
 
 Create documentation needed issues across different repositories
 
