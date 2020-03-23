@@ -1,7 +1,6 @@
 project:
   name: "Godocit"
   state: "unstable"
-  image: "https://raw.githubusercontent.com/okkur/actions-godocit/master/media/logo.svg?sanitize=true"
   website: "https://godocit.okkur.org"
   oneLiner: "Create documentation needed issues across different repositories"
   description: |

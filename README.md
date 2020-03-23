@@ -1,4 +1,4 @@
-<a href='https://godocit.okkur.org'><img src='https://raw.githubusercontent.com/okkur/actions-godocit/master/media/logo.svg?sanitize=true' width='500'/></a>
+# Godocit
 
 Create documentation needed issues across different repositories
 
@@ -6,7 +6,6 @@ Create documentation needed issues across different repositories
 
 **NOTE: This is a work-in-progress, we do not consider it production ready. Use at your own risk.**
 
-# Godocit
 When a PR introduces a new feature that requires documentation, this action
 can automatically create an issue on your website's repository to add
 documentation for that new feature.
