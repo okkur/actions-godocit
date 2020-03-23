@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create the documentation issues
-      uses: okkur/actions-godocit@v0.0.1
+      uses: okkur/actions-godocit@v0.1.0
       with:
         targetRepo: 'USER/REPO'
       env:
