@@ -30,6 +30,6 @@ _2020-03-23_
 
 ## Changes since v0.0.1
 
-- Add the GitHub action
-- Add the Dockerfile
-- Add the workflow examples
+- Add GitHub action
+- Add Dockerfile
+- Add workflow examples
